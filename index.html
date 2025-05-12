@@ -1,129 +1,196 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formula E</title>
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      function switchLang(lang) {
-        document.documentElement.lang = lang;
-        const it = document.querySelectorAll('.lang-it');
-        const en = document.querySelectorAll('.lang-en');
-        it.forEach(el => el.style.display = lang === 'it' ? 'block' : 'none');
-        en.forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
-      }
-    </script>
-  </head>
-  <body class="bg-zinc-900 text-white font-sans">
-    <header class="flex flex-col md:flex-row justify-between items-center p-4 md:p-6 bg-zinc-950 shadow-md">
-      <img src="assets/mini-logo.jpg" alt="Formula E Logo" class="h-8 md:h-10" />
-      <nav class="flex flex-wrap items-center gap-2 md:gap-4">
-        <a href="#home" class="hover:text-cyan-400 text-sm md:text-base">Home</a>
-        <a href="#about" class="hover:text-cyan-400 text-sm md:text-base">Chi siamo</a>
-        <a href="#features" class="hover:text-cyan-400 text-sm md:text-base">Funzionalità</a>
-        <a href="#contact" class="hover:text-cyan-400 text-sm md:text-base">Contatti</a>
-        <select onchange="switchLang(this.value)" class="bg-zinc-800 text-white px-2 py-1 rounded text-sm">
-          <option value="it">🇮🇹 IT</option>
-          <option value="en">🇬🇧 EN</option>
-        </select>
-      </nav>
-    </header>
-    <section id="home" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4 md:px-8 py-10 md:py-20 bg-gradient-to-b from-zinc-900 to-zinc-800">
-      <div class="text-center md:text-left">
-      <h1 class="text-3xl md:text-5xl font-extrabold mb-4 lang-it animate-bounce">🚀 Il futuro del trading su Ethereum</h1>
-      <h1 class="text-3xl md:text-5xl font-extrabold mb-4 lang-en animate-bounce" style="display:none">🚀 The Future of Ethereum Trading</h1>
-      <p class="mb-6 text-lg md:text-xl lang-it animate-fade-in">✨ Formula E ti guida nel trading automatico con intelligenza artificiale, semplicità ed efficienza.</p>
-      <p class="mb-6 text-lg md:text-xl lang-en animate-fade-in" style="display:none">✨ Formula E guides you in automated trading with AI, simplicity, and efficiency.</p>
-      <a href="#features" class="inline-block bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-cyan-300 hover:shadow-cyan-400/50 transition transform hover:scale-105 animate-slide-up">
-        🌟 Scopri di più
-      </a>
-      </div>
-      <div class="flex justify-center">
-      <img src="assets/ethereum-crystal.jpg" alt="Ethereum Logo" class="w-full max-w-md mx-auto animate-pulse rounded-lg shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300" />
-      </div>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formula E</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function switchLang(lang) {
+      document.documentElement.lang = lang;
+      const it = document.querySelectorAll('.lang-it');
+      const en = document.querySelectorAll('.lang-en');
+      it.forEach(el => el.style.display = lang === 'it' ? 'block' : 'none');
+      en.forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-1000');
+        observer.observe(el);
+      });
+    });
+  </script>
+</head>
+<body class="bg-zinc-900 text-white font-sans">
+  <header class="flex flex-col md:flex-row justify-between items-center p-4 md:p-6 bg-zinc-950 shadow-md">
+    <img src="assets/mini-logo.jpg" alt="Formula E Logo" class="h-10" />
+    <nav class="flex flex-wrap items-center gap-4 mt-4 md:mt-0">
+      <a href="#home" class="hover:text-cyan-400 text-sm md:text-base">Home</a>
+      <a href="#about" class="hover:text-cyan-400 text-sm md:text-base">Chi siamo</a>
+      <a href="#features" class="hover:text-cyan-400 text-sm md:text-base">Funzionalità</a>
+      <a href="#contact" class="hover:text-cyan-400 text-sm md:text-base">Contatti</a>
+      <select onchange="switchLang(this.value)" class="bg-zinc-800 text-white px-2 py-1 rounded text-sm">
+        <option value="it">🇮🇹 IT</option>
+        <option value="en">🇬🇧 EN</option>
+      </select>
+    </nav>
+  </header>
 
-    <section id="features" class="bg-zinc-800 px-4 md:px-8 py-10 md:py-16">
-      <div class="text-center mb-6 md:mb-10">
-        <h2 class="text-2xl md:text-3xl font-bold lang-it animate-fade-in">✨ Perché scegliere Formula E</h2>
-        <h2 class="text-2xl md:text-3xl font-bold lang-en animate-fade-in" style="display:none">✨ Why Choose Formula E</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
-          <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">💰 Nessun costo extra</h3>
-          <p class="text-sm md:text-base">Nessuna spesa nascosta o costi aggiuntivi.</p>
-        </div>
-        <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
-          <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">🤖 Sistema completamente automatico</h3>
-          <p class="text-sm md:text-base">Tutto il lavoro è gestito automaticamente.</p>
-        </div>
-        <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
-          <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">🧠 Intelligenza artificiale avanzata</h3>
-          <p class="text-sm md:text-base">Tecnologia AI per risultati ottimali.</p>
-        </div>
-        <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
-          <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">⏱️ Operativo 24/7</h3>
-          <p class="text-sm md:text-base">Sempre attivo, senza interruzioni.</p>
-        </div>
-        <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
-          <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">📈 Nessun monitoraggio necessario</h3>
-          <p class="text-sm md:text-base">Il sistema si occupa di tutto per te.</p>
-        </div>
-        <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
-          <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">📘 Ideale per principianti</h3>
-          <p class="text-sm md:text-base">Non serve essere esperti di trading.</p>
-        </div>
-        <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
-          <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">🛠️ Facile da usare</h3>
-          <p class="text-sm md:text-base">Perfetto anche senza esperienza nel settore.</p>
-        </div>
-        <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
-          <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">💻 VPS gratuita configurata</h3>
-          <p class="text-sm md:text-base">Server virtuale pronto all'uso senza costi aggiuntivi.</p>
-        </div>
-        <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
-          <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">📊 Performance trasparenti</h3>
-          <p class="text-sm md:text-base">Risultati verificabili in tempo reale.</p>
-        </div>
-      </div>
-    </section>
+  <!-- Esempio sezione con effetto reveal -->
+  <section id="home" class="reveal bg-gradient-to-b from-zinc-900 to-zinc-800 px-4 md:px-8 py-20 grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+    <div class="text-center md:text-left">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 lang-it">Il futuro del trading su Ethereum</h1>
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 lang-en" style="display:none">The Future of Ethereum Trading</h1>
+      <p class="mb-6 text-lg md:text-xl lang-it">Formula E ti guida nel trading automatico con intelligenza artificiale, semplicità ed efficienza.</p>
+      <p class="mb-6 text-lg md:text-xl lang-en" style="display:none">Formula E guides you in automated trading with AI, simplicity, and efficiency.</p>
+    </div>
+    <div class="flex justify-center">
+      <img src="assets/ethereum-crystal.jpg" alt="Ethereum Logo" class="w-full max-w-md mx-auto rounded-lg shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300" />
+    </div>
+  </section>
 
-    <section id="about" class="px-4 md:px-8 py-10 md:py-16 text-center bg-zinc-900 text-white">
-      <h2 class="text-2xl md:text-4xl font-extrabold mb-4 md:mb-6 lang-it animate-fade-in">Chi siamo</h2>
-      <h2 class="text-2xl md:text-4xl font-extrabold mb-4 md:mb-6 lang-en animate-fade-in" style="display:none">About Us</h2>
-      <p class="max-w-xl md:max-w-3xl mx-auto text-sm md:text-lg lang-it animate-slide-up">
-        Siamo un gruppo di innovatori appassionati, uniti dalla visione di trasformare il mondo del trading. Con creatività, tecnologia e un pizzico di magia, rendiamo il futuro della finanza decentralizzata accessibile a tutti.
-      </p>
-      <p class="max-w-xl md:max-w-3xl mx-auto text-sm md:text-lg lang-en animate-slide-up" style="display:none">
-        We are a team of passionate innovators, united by the vision of transforming the trading world. With creativity, technology, and a touch of magic, we make the future of decentralized finance accessible to everyone.
-      </p>
-      <div class="mt-6 md:mt-12">
-        <a href="https://www.myfxbook.com/members/Molinarimaster/molinari-formula-e/11102556" target="_blank" class="inline-block">
-          <img src="assets/1111.png" alt="Vedi i nostri risultati" class="w-full max-w-full mx-auto rounded-lg shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300 animate-fade-in" />
-        </a>
-        <p class="mt-4 md:mt-6 text-cyan-400 text-sm md:text-lg">
-          <a href="https://www.myfxbook.com/members/Molinarimaster/molinari-formula-e/11102556" target="_blank" class="hover:underline">
-            Vedili in tempo reale su MyFxBook
+  <!-- Sezione Motivazionale -->
+<section class="reveal relative min-h-screen flex items-center justify-center text-center overflow-hidden px-4">
+  <img src="assets/hero-motivation.jpg" alt="Ethereum Motivazione" class="absolute inset-0 w-full h-full object-cover opacity-70">
+  <div class="relative z-10 w-full max-w-3xl mx-auto text-white animate-slide-up px-4 md:px-8">
+    <h2 class="text-3xl md:text-5xl font-bold mb-6 lang-it">💡 Tutti iniziano da zero. Chi agisce, va avanti.</h2>
+    <h2 class="text-3xl md:text-5xl font-bold mb-6 lang-en" style="display:none">💡 Everyone starts from zero. Those who act, move forward.</h2>
+    <p class="text-base md:text-xl lang-it leading-relaxed mb-4">
+      Non serve essere un esperto. Formula E è pensato per chi vuole iniziare ma non sa da dove partire.<br><br>
+      È semplice. È automatico. È il primo passo verso una nuova libertà finanziaria. E oggi, quel passo può essere il tuo.
+    </p>
+    <p class="text-base md:text-xl lang-en leading-relaxed mb-4" style="display:none">
+      You don’t need to be an expert. Formula E is designed for those who want to start, but don’t know how.<br><br>
+      It’s simple. It’s automatic. It’s your first step toward a new financial freedom. And today, that step can be yours.
+    </p>
+    <a href="#contact" class="inline-block bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-cyan-300 hover:shadow-cyan-400/50 transition transform hover:scale-105 text-lg">
+      ✨ Inizia ora, senza pensieri
+    </a>
+  </div>
+  <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+</section>
+
+<!-- Sezione FAQ -->
+<section class="reveal bg-zinc-900 px-4 md:px-8 py-12 md:py-20 text-white text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-4xl font-bold mb-10 lang-it">❓ Domande frequenti per chi parte da zero</h2>
+    <h2 class="text-2xl md:text-4xl font-bold mb-10 lang-en" style="display:none">❓ Frequently Asked Questions for Beginners</h2>
+  </div>
+  <div class="max-w-3xl mx-auto space-y-8 text-left">
+    <div class="lang-it">
+      <h3 class="text-lg md:text-xl font-semibold text-cyan-400">Devo avere esperienza nel trading?</h3>
+      <p class="text-sm md:text-base">Assolutamente no. Formula E è progettato per funzionare da solo. Tu devi solo iniziare.</p>
+    </div>
+    <div class="lang-en" style="display:none">
+      <h3 class="text-lg md:text-xl font-semibold text-cyan-400">Do I need trading experience?</h3>
+      <p class="text-sm md:text-base">Not at all. Formula E is designed to run on its own. You just need to get started.</p>
+    </div>
+    <div class="lang-it">
+      <h3 class="text-lg md:text-xl font-semibold text-cyan-400">Quanto tempo devo dedicarci?</h3>
+      <p class="text-sm md:text-base">Pochi minuti per configurarlo. Poi lavora in autonomia, 24/7.</p>
+    </div>
+    <div class="lang-en" style="display:none">
+      <h3 class="text-lg md:text-xl font-semibold text-cyan-400">How much time does it take?</h3>
+      <p class="text-sm md:text-base">Just a few minutes to set it up. Then it works on its own, 24/7.</p>
+    </div>
+    <div class="lang-it">
+      <h3 class="text-lg md:text-xl font-semibold text-cyan-400">È sicuro?</h3>
+      <p class="text-sm md:text-base">Tutti i processi sono tracciabili e trasparenti. Puoi sempre vedere i risultati in tempo reale.</p>
+    </div>
+    <div class="lang-en" style="display:none">
+      <h3 class="text-lg md:text-xl font-semibold text-cyan-400">Is it safe?</h3>
+      <p class="text-sm md:text-base">All operations are transparent and trackable. You can see results in real time.</p>
+    </div>
+    <div class="lang-it">
+      <h3 class="text-lg md:text-xl font-semibold text-cyan-400">Posso iniziare anche con poco?</h3>
+      <p class="text-sm md:text-base">Sì. Formula E è accessibile anche per piccoli capitali. Ogni passo conta.</p>
+    </div>
+    <div class="lang-en" style="display:none">
+      <h3 class="text-lg md:text-xl font-semibold text-cyan-400">Can I start with a small amount?</h3>
+      <p class="text-sm md:text-base">Yes. Formula E is accessible even with a small starting capital. Every step matters.</p>
+    </div>
+  </div>
+</section>
+  <!-- Sezione MyFxBook -->
+<section class="reveal px-4 md:px-8 py-10 md:py-16 text-center">
+  <div class="mt-6 md:mt-12">
+    <a href="https://www.myfxbook.com/members/Molinarimaster/molinari-formula-e/11102556" target="_blank" class="inline-block">
+      <img src="assets/1111.png" alt="Vedi i nostri risultati" class="w-full max-w-full mx-auto rounded-lg shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300" />
+    </a>
+    <p class="mt-4 md:mt-6 text-cyan-400 text-sm md:text-lg">
+      <a href="https://www.myfxbook.com/members/Molinarimaster/molinari-formula-e/11102556" target="_blank" class="hover:underline">
+        <div class="inline-block bg-cyan-400 text-black font-semibold px-4 py-2 rounded-lg shadow-lg hover:bg-cyan-300 hover:shadow-cyan-400/50 transition transform hover:scale-105">
+          <a href="https://www.myfxbook.com/members/Molinarimaster/molinari-formula-e/11102556" target="_blank" class="flex items-center gap-2">
+            🌟 Vedili in tempo reale su MyFxBook 🚀
           </a>
-        </p>
-      </div>
-    </section>
+        </div>
+      </a>
+    </p>
+  </div>
+</section>
 
-    <section id="contact" class="bg-zinc-800 px-4 md:px-8 py-10 md:py-16 flex flex-col items-center">
-      <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 lang-it animate-fade-in">Contattaci</h2>
-      <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 lang-en animate-fade-in" style="display:none">Contact Us</h2>
-      <form action="https://formspree.io/f/mwkgnlvp" method="POST" class="w-full max-w-md space-y-4 md:space-y-6 bg-zinc-900 p-6 md:p-8 rounded-xl shadow-lg animate-slide-up">
-        <input name="name" type="text" placeholder="Nome" required class="w-full p-3 md:p-4 rounded bg-zinc-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" />
-        <input name="email" type="email" placeholder="Email" required class="w-full p-3 md:p-4 rounded bg-zinc-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" />
-        <textarea name="message" placeholder="Messaggio" class="w-full p-3 md:p-4 rounded bg-zinc-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"></textarea>
-        <button type="submit" class="w-full bg-cyan-400 text-black font-semibold px-4 md:px-6 py-2 md:py-3 rounded hover:bg-cyan-300 transition transform hover:scale-105">Invia</button>
-      </form>
-    </section>
+<!-- Sezione Funzionalità -->
+<section id="features" class="reveal bg-zinc-800 px-4 md:px-8 py-10 md:py-16">
+  <div class="text-center mb-6 md:mb-10">
+    <h2 class="text-2xl md:text-3xl font-bold lang-it animate-fade-in">✨ Perché scegliere Formula E</h2>
+    <h2 class="text-2xl md:text-3xl font-bold lang-en animate-fade-in" style="display:none">✨ Why Choose Formula E</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+    <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
+      <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">💰 Nessun costo extra</h3>
+      <p class="text-sm md:text-base">Nessuna spesa nascosta o costi aggiuntivi.</p>
+    </div>
+    <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
+      <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">🤖 Sistema completamente automatico</h3>
+      <p class="text-sm md:text-base">Tutto il lavoro è gestito automaticamente.</p>
+    </div>
+    <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
+      <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">🧠 Intelligenza artificiale avanzata</h3>
+      <p class="text-sm md:text-base">Tecnologia AI per risultati ottimali.</p>
+    </div>
+    <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
+      <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">⏱️ Operativo 24/7</h3>
+      <p class="text-sm md:text-base">Sempre attivo, senza interruzioni.</p>
+    </div>
+    <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
+      <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">📈 Nessun monitoraggio necessario</h3>
+      <p class="text-sm md:text-base">Il sistema si occupa di tutto per te.</p>
+    </div>
+    <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
+      <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">📘 Ideale per principianti</h3>
+      <p class="text-sm md:text-base">Non serve essere esperti di trading.</p>
+    </div>
+    <div class="bg-zinc-900 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-cyan-400/50 transition-shadow duration-300">
+      <h3 class="text-lg md:text-xl font-semibold mb-2 flex items-center gap-2">📊 Performance trasparenti</h3>
+      <p class="text-sm md:text-base">Risultati verificabili in tempo reale.</p>
+    </div>
+  </div>
+</section>
 
-    <footer class="text-center py-4 md:py-6 text-sm bg-zinc-950">
-      <p>© 2025 Formula E - Tutti i diritti riservati</p>
-    </footer>
-  </body>
+<!-- Sezione Contatti -->
+<section id="contact" class="reveal bg-zinc-800 px-4 md:px-8 py-10 md:py-16 flex flex-col items-center">
+  <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 lang-it animate-fade-in">Contattaci</h2>
+  <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 lang-en animate-fade-in" style="display:none">Contact Us</h2>
+  <form action="https://formspree.io/f/mwkgnlvp" method="POST" class="w-full max-w-md space-y-4 md:space-y-6 bg-zinc-900 p-6 md:p-8 rounded-xl shadow-lg animate-slide-up">
+    <input name="name" type="text" placeholder="Nome" required class="w-full p-3 md:p-4 rounded bg-zinc-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" />
+    <input name="email" type="email" placeholder="Email" required class="w-full p-3 md:p-4 rounded bg-zinc-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition" />
+    <textarea name="message" placeholder="Messaggio" class="w-full p-3 md:p-4 rounded bg-zinc-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"></textarea>
+    <button type="submit" class="w-full bg-cyan-400 text-black font-semibold px-4 md:px-6 py-2 md:py-3 rounded hover:bg-cyan-300 transition transform hover:scale-105">Invia</button>
+  </form>
+</section>
+
+  <footer class="text-center py-4 md:py-6 text-sm bg-zinc-950">
+    <p>© 2025 Formula E - Tutti i diritti riservati</p>
+  </footer>
+</body>
 </html>
